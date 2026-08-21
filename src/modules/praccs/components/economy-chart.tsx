@@ -68,7 +68,7 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
 
     const maxVal = 35000
 
-    const linesCoords = chartData.map((d, i) => {
+    const linesCoords = chartData.map((d: any, i: number) => {
       const x = paddingLeft + (i / (totalRounds - 1)) * chartWidth
       const y = cY - (d.diff / maxVal) * (chartHeight / 2)
       return { x, y, diff: d.diff }
@@ -76,13 +76,13 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
 
     // Construcción de polígonos de relleno divididos con base en la línea neutral ($0)
     let falkePath = `${linesCoords[0].x},${cY} `
-    linesCoords.forEach(c => {
+    linesCoords.forEach((c: any) => {
       falkePath += `${c.x},${c.y > cY ? cY : c.y} `
     })
     falkePath += `${linesCoords[linesCoords.length - 1].x},${cY}`
 
     let rivalPath = `${linesCoords[0].x},${cY} `
-    linesCoords.forEach(c => {
+    linesCoords.forEach((c: any) => {
       rivalPath += `${c.x},${c.y < cY ? cY : c.y} `
     })
     rivalPath += `${linesCoords[linesCoords.length - 1].x},${cY}`
@@ -161,7 +161,7 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
           <polygon points={areaRivalPoints} fill="#ef4444" fillOpacity="0.12" />
 
           {/* 柱 COLUMNAS VERTICALES DE CONTRASTE (Barras de fondo) */}
-          {coords.map((c, i) => {
+          {coords.map((c: any, i: number) => {
             const isFalkeDominant = c.diff >= 0
             return (
               <line
@@ -178,7 +178,7 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
           })}
 
           {/* 📈 LÍNEA CONTINUA QUE CAMBIA DE COLOR SEGÚN EL BANDO DOMINANTE */}
-          {coords.map((c, i) => {
+          {coords.map((c: any, i: number) => {
             if (i === 0) return null
             const prev = coords[i - 1]
             const isFalkeSegment = c.diff >= 0
@@ -198,7 +198,7 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
           })}
 
           {/* Nodos circulares interactivos */}
-          {coords.map((c, i) => {
+          {coords.map((c: any, i: number) => {
             const isFalkeDominant = c.diff >= 0
             return (
               <g key={i} className="group/node cursor-pointer">
