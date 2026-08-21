@@ -1,65 +1,106 @@
-import Image from "next/image";
+import { loginWithEmail, signInAsGuest } from './actions/auth'
+import { BackgroundAura } from '@/components/ui/background-aura'
+import { BorderBeam } from "@/components/ui/border-beam"
 
-export default function Home() {
+interface Props {
+  searchParams: Promise<{ error?: string }>
+}
+
+export default async function LandingPage({ searchParams }: Props) {
+  const { error } = await searchParams
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="relative min-h-screen flex items-center justify-center p-6 overflow-hidden">
+      <BackgroundAura />
+
+      <div className="relative w-full max-w-md z-10">
+        {/* Logo / Header */}
+        <div className="text-center mb-10 space-y-2">
+          <h1 className="text-8xl font-black italic tracking-tighter text-foreground uppercase leading-none">
+            VAN<span className="text-primary">TAGE</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-muted-foreground text-xs font-bold tracking-[0.3em] uppercase opacity-80">
+            The Ultimate Esports Management Platform
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Login Card con Border Beam */}
+        <div className="relative bg-card/40 border border-border p-8 rounded-2xl backdrop-blur-xl shadow-2xl overflow-hidden">
+
+          {/* Formulario Email/Password */}
+          <form action={loginWithEmail} className="space-y-5 relative z-10">
+            <div className="space-y-1">
+              <label className="text-[10px] font-black uppercase text-muted-foreground ml-1 tracking-widest">
+                Staff Access
+              </label>
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="EMAIL"
+                className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground text-sm outline-none focus:ring-2 focus:ring-ring/50 transition-all placeholder:text-muted-foreground/50"
+              />
+            </div>
+            <div className="space-y-1">
+              <input
+                name="password"
+                type="password"
+                required
+                placeholder="PASSWORD"
+                className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground text-sm outline-none focus:ring-2 focus:ring-ring/50 transition-all placeholder:text-muted-foreground/50"
+              />
+            </div>
+
+            {error && (
+              <p className="text-destructive text-[11px] font-bold uppercase text-center animate-pulse tracking-tighter">
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground font-black py-3.5 rounded-xl hover:opacity-90 transition-all active:scale-[0.98] uppercase text-sm tracking-tighter shadow-lg shadow-primary/20"
+            >
+              Login Staff
+            </button>
+          </form>
+
+          {/* Divisor */}
+          <div className="relative my-8 z-10">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border/50"></span>
+            </div>
+            <div className="relative flex justify-center text-[10px] uppercase">
+              <span className="bg-transparent px-3 text-muted-foreground font-bold tracking-widest">
+                O continuar como
+              </span>
+            </div>
+          </div>
+
+          {/* Formulario Invitado */}
+          <form action={signInAsGuest} className="relative z-10">
+            <button
+              type="submit"
+              className="w-full bg-background/50 border border-border text-muted-foreground font-bold py-3 rounded-xl hover:bg-muted hover:text-foreground transition-all active:scale-[0.98] uppercase text-xs tracking-widest"
+            >
+              Entrar como Invitado
+            </button>
+          </form>
+
+          {/* Animación de Borde Blanco */}
+          <BorderBeam
+            duration={8}
+            size={400}
+            className="from-transparent via-white to-transparent"
+          />
         </div>
-      </main>
-    </div>
-  );
+
+        <footer className="mt-8 text-center">
+          <p className="text-[10px] text-muted-foreground/40 font-bold uppercase tracking-[0.4em]">
+            &copy; {new Date().getFullYear()} Davopavo - Restricted Access
+          </p>
+        </footer>
+      </div>
+    </main>
+  )
 }

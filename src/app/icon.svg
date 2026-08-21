@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Letra V en blanco -->
+  <text 
+    x="95" 
+    y="190" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-size="160" 
+    font-weight="900" 
+    font-style="italic" 
+    fill="#ffffff" 
+    text-anchor="middle">
+    V
+  </text>
+  
+  <!-- Letra T en rojo vibrante (solapada) -->
+  <text 
+    x="180" 
+    y="190" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-size="160" 
+    font-weight="900" 
+    font-style="italic" 
+    fill="#e11d48" 
+    text-anchor="middle">
+    T
+  </text>
+</svg>

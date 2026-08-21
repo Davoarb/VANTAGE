@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// 👤 JUGADORES DEL EQUIPO (Solo FALKE)
+model User {
+  id         String        @id @default(uuid())
+  teamId     String?
+  role       String // "Controlador", "Duelista"...
+  riotPuuid  String        @unique
+  gameName   String // "Davo"
+  tagLine    String
+  createdAt  DateTime      @default(now())
+  team       Team?         @relation(fields: [teamId], references: [id])
+  matchStats MatchPlayer[] // Historial de partidas de ESTE jugador
+}
+
+model Team {
+  id        String   @id @default(uuid())
+  name      String // "FALKE"
+  logoUrl   String?
+  createdAt DateTime @default(now())
+  users     User[]
+  matches   Match[]
+}
+
+// 🗺️ LA PARTIDA (Contiene los Macro-Datos del Mapa)
+model Match {
+  id             String        @id @default(uuid())
+  teamId         String
+  map            String // Ej: "Ascent", "Pearl"
+  date           DateTime      @default(now())
+  scoreUs        Int
+  scoreEnemy     Int
+  vodUrl         String?
+  isDemo         Boolean      @default(false) //GUEST MODE
+  // 📦 EL CONTENEDOR SALVAVIDAS (Minimapa, heatmaps y feed de bajas)
+  rawTimeline    Json?
+  // 🎯 MACRO-STATS DEL MAPA (Para alimentar tu Dashboard de Mapas)
+  atkRoundsWon   Int           @default(0)
+  atkRoundsLost  Int           @default(0)
+  defRoundsWon   Int           @default(0)
+  defRoundsLost  Int           @default(0)
+  // 🏆 CONDICIONES DE VICTORIA (Team)
+  killsWins      Int           @default(0) // Ganadas por matar a los 5
+  spikeDetonates Int           @default(0) // Ganadas por explosión
+  spikeDefuses   Int           @default(0) // Ganadas por defuse
+  // 💰 RENDIMIENTO ECONÓMICO (Rondas ganadas en ese estado)
+  pistolWon      Int           @default(0) // Max 2
+  ecoWon         Int           @default(0)
+  bonusWon       Int           @default(0)
+  fullBuyWon     Int           @default(0)
+  // RELACIONES
+  team           Team          @relation(fields: [teamId], references: [id])
+  players        MatchPlayer[] // ¡SOLO 5 REGISTROS MÁXIMO AQUÍ!
+}
+
+// ⚔️ STATS INDIVIDUALES (Para alimentar tu panel estilo Tracker.gg)
+model MatchPlayer {
+  id          String @id @default(uuid())
+  matchId     String
+  userId      String // Enlazado directamente a tu jugador de FALKE
+  agent       String
+  // STATS BÁSICAS
+  kills       Int
+  deaths      Int
+  assists     Int
+  acs         Int
+  // STATS AVANZADAS (Las que pide tu PlayerTrackerProfile)
+  kast        Float
+  adr         Float
+  hsPercent   Float
+  firstKills  Int
+  firstDeaths Int
+  aces        Int
+  // RELACIONES
+  match       Match  @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  user        User   @relation(fields: [userId], references: [id])
+}

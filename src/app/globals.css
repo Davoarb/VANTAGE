@@ -1,26 +1,111 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+
+  /* 🔥 Mapeo Completo de Colores para Tailwind v4 🔥 */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Light Mode - Clean Slate */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.6 0.25 25); /* Falke Red */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0 0);
+  --secondary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.4 0 0);
+  --accent: oklch(0.92 0 0);
+  --accent-foreground: oklch(0.12 0 0);
+  --destructive: oklch(0.6 0.25 25);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: oklch(0.6 0.25 25);
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Falke Esports Deep Dark Theme */
+  --background: oklch(0.1 0 0); /* Negro casi absoluto */
+  --foreground: oklch(0.98 0 0);
+
+  --card: oklch(0.14 0.01 25); /* Gris/Negro muy oscuro elegante */
+  --card-foreground: oklch(0.98 0 0);
+
+  --popover: oklch(0.12 0.01 25);
+  --popover-foreground: oklch(0.98 0 0);
+
+  --primary: oklch(0.62 0.22 26); /* Rojo Falke Vibrante y Agresivo */
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.18 0.01 25);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.16 0.01 25);
+  --muted-foreground: oklch(0.65 0.01 25);
+
+  --accent: oklch(0.2 0.02 25);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.55 0.22 26);
+
+  --border: oklch(1 0 0 / 8%); /* Bordes mínimos */
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.62 0.22 26); /* Ring rojo */
+
+  /* Sidebar Sync */
+  --sidebar: oklch(0.11 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.62 0.22 26);
+  --sidebar-accent: oklch(0.16 0.01 25);
+  --sidebar-border: oklch(1 0 0 / 8%);
+}
+
+@layer base {
+  * {
+    /* Usamos CSS nativo para evitar problemas de compilación circular en v4 */
+    border-color: var(--border);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04";
+  }
 }
