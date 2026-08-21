@@ -95,7 +95,7 @@ export const playersDatabase: Record<string, PlayerStats> = {
     mapsData: [
       { mapName: "Haven", acs: 174, kd: 0.94, kda: "1.42", fkDiff: -2 },
       { mapName: "Fracture", acs: 209, kd: 1.23, kda: "1.89", fkDiff: 1 },
-      { mapName: "Breeze", acs: 150, kd: 0.81, hda: "1.13", fkDiff: -1 },
+      { mapName: "Breeze", acs: 150, kd: 0.81, kda: "1.13", fkDiff: -1 },
       { mapName: "Lotus", acs: 272, kd: 1.44, kda: "1.81", fkDiff: 4 },
       { mapName: "Pearl", acs: 169, kd: 1.14, kda: "1.68", fkDiff: 0 },
       { mapName: "Split", acs: 176, kd: 1.33, kda: "1.92", fkDiff: -2 },
