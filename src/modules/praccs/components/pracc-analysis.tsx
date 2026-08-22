@@ -167,7 +167,6 @@ return (
             <div id={containerId} className="w-full h-full object-contain" />
             </div>
         </div>
-        <TimelineRounds scoreUs={wins} scoreEnemy={losses} rawTimelineData={currentActiveMatch.rawTimeline} currentRound={activeRoundNumber} onRoundSelect={handleRoundSelect} />
         {/* =====================================================================
             📊 BLOQUE MIXTO: SNAPSHOT ECONÓMICO + RADAR INTERACTIVOS ALINEADOS
            ===================================================================== */}

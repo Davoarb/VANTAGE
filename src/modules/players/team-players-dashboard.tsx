@@ -216,10 +216,10 @@ export function TeamPlayersDashboard({ selectedPlayer }: TeamPlayersDashboardPro
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border/40 pb-3 gap-3">
               <div className="flex items-center gap-2.5">
                 <div className="h-6 w-6 rounded overflow-hidden border border-border/40 bg-slate-950">
-                <img 
+                <img
                   src={actualPlayerKey ? mainPlayerAgent[actualPlayerKey]?.icon : undefined}
-                  alt="" 
-                  className="h-full w-full object-cover" 
+                  alt=""
+                  className="h-full w-full object-cover"
                   />
                 </div>
                 <span className="text-white text-sm font-black uppercase tracking-wider">{p.name} · Panel de Control</span>
