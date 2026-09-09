@@ -5,7 +5,7 @@ import {
     DICTIONARY_WEAPONS,
     DICTIONARY_ARMOR,
     BANDO_INICIAL_FALKE
-} from './constants';
+} from '@/lib/constants';
 
 export function procesarPartida(matchData) {
     // 1. Extraer identificadores básicos
