@@ -21,7 +21,7 @@ export function MapSitesAnalysis({ sitesData, activeSide }: MapSitesAnalysisProp
               <span>{site.name}</span>
               {showAtk && <span className="text-[9px] text-muted-foreground/60">Postplant: {site.postPlant}%</span>}
             </div>
-            
+
             <div className="space-y-3 font-sans text-[11px]">
               {showAtk && (
                 <div className="space-y-1">

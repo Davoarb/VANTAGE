@@ -6,8 +6,8 @@ import { AGENT_FULL_ICONS } from "@/config/valorant-assets"
 import { cn } from "@/lib/utils"
 
 interface PlayerTrackerProfileProps {
-    playerName: string
-    onBack?: () => void
+  playerName: string
+  onBack?: () => void
 }
 
 export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfileProps) {
@@ -75,14 +75,14 @@ export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfil
 
   return (
     <div className="space-y-6 font-mono text-foreground animate-fade-in">
-      
+
       {/* Cabecera con botón de retorno */}
       <div className="flex items-center justify-between border-b border-border/40 pb-2">
         <h3 className="text-sm font-black text-primary uppercase tracking-wider">
           📊 PERFORMANCE TRACKER · {playerName}
         </h3>
         {onBack && (
-          <button 
+          <button
             onClick={onBack}
             className="text-xs font-bold text-muted-foreground hover:text-primary border border-border/60 bg-slate-950/40 px-2.5 py-1 rounded-md transition-all"
           >
@@ -94,7 +94,7 @@ export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfil
       {/* 🛡️ PANEL 1: ROSTER OVERVIEW */}
       <div className="rounded-2xl border border-border/60 bg-slate-950/60 p-5 shadow-2xl relative overflow-hidden space-y-6">
         <div className="absolute right-0 top-0 h-40 w-40 -translate-y-12 translate-x-12 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-        
+
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {overviewStats.map((stat, i) => (
             <div key={i} className="bg-background/40 border border-border/40 p-4 rounded-xl flex items-center justify-between">
@@ -120,21 +120,21 @@ export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfil
 
       {/* ⚔️ PANEL 2: INTERFAZ DE HOJA DE CÁLCULO AVANZADA INTEGRADA */}
       <div className="rounded-2xl border border-border/60 bg-slate-950/80 p-5 shadow-xl space-y-5">
-        
+
         {/* Selector de sub-vistas tácticas */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-border/30 pb-3">
           <h4 className="text-xs font-black text-foreground/80 uppercase tracking-widest">
             📈 DATOS DE CAMPAÑA EXTRAÍDOS DE SCRIMS
           </h4>
           <div className="flex bg-slate-950 p-0.5 border border-border/40 rounded-lg text-[9px] font-bold uppercase tracking-wider self-end sm:self-auto">
-            <button 
-              onClick={() => setInternalTab("maps")} 
+            <button
+              onClick={() => setInternalTab("maps")}
               className={cn("px-3 py-1 rounded-md transition-all flex items-center gap-1.5", internalTab === "maps" ? "bg-slate-900 border border-border/60 text-white" : "text-muted-foreground/60")}
             >
               <BarChart2 className="h-3 w-3" /> Resumen General Por Mapas
             </button>
-            <button 
-              onClick={() => setInternalTab("matrix")} 
+            <button
+              onClick={() => setInternalTab("matrix")}
               className={cn("px-3 py-1 rounded-md transition-all flex items-center gap-1.5", internalTab === "matrix" ? "bg-slate-900 border border-border/60 text-white" : "text-muted-foreground/60")}
             >
               <LayoutGrid className="h-3 w-3" /> Matriz Cruzada Agente x Mapa
@@ -213,7 +213,7 @@ export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfil
                         <img src={avatar} alt="" className="h-4 w-4 rounded object-cover border border-border/40 shrink-0" />
                         <span className="group-hover:text-primary transition-colors">{row.agent}</span>
                       </td>
-                      
+
                       {/* Celdas cruzadas con mapeo de estilos del Excel */}
                       <td className={cn("py-2.5 font-mono", getHeatmapClass(row.haven))}>{row.haven === 0 ? "0,00" : row.haven.toFixed(2).replace(".", ",")}</td>
                       <td className={cn("py-2.5 font-mono", getHeatmapClass(row.bind))}>{row.bind === 0 ? "0,00" : row.bind.toFixed(2).replace(".", ",")}</td>
@@ -227,7 +227,7 @@ export function PlayerTrackerProfile({ playerName, onBack }: PlayerTrackerProfil
                       <td className={cn("py-2.5 font-mono", getHeatmapClass(row.sunset))}>{row.sunset === 0 ? "0,00" : row.sunset.toFixed(2).replace(".", ",")}</td>
                       <td className={cn("py-2.5 font-mono", getHeatmapClass(row.abyss))}>{row.abyss === 0 ? "0,00" : row.abyss.toFixed(2).replace(".", ",")}</td>
                       <td className={cn("py-2.5 font-mono", getHeatmapClass(row.corrode))}>{row.corrode === 0 ? "0,00" : row.corrode.toFixed(2).replace(".", ",")}</td>
-                      
+
                       {/* Fila Total lateral */}
                       <td className="py-2.5 pr-3 font-mono font-black text-amber-400 bg-slate-900/20 border-l border-border/20">
                         {row.total.toFixed(2).replace(".", ",")}

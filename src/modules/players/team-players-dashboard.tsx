@@ -45,10 +45,10 @@ export function TeamPlayersDashboard({ selectedPlayer }: TeamPlayersDashboardPro
   ])
 
   const playerKeys = Object.keys(playersDatabase)
-  
+
   // 2. Buscamos el jugador real ignorando mayúsculas/minúsculas de la URL
-  const actualPlayerKey = selectedPlayer 
-    ? playerKeys.find(k => k.toLowerCase() === selectedPlayer.toLowerCase()) 
+  const actualPlayerKey = selectedPlayer
+    ? playerKeys.find(k => k.toLowerCase() === selectedPlayer.toLowerCase())
     : null
 
   // 3. Determinamos el modo de vista de forma automática
@@ -130,7 +130,7 @@ export function TeamPlayersDashboard({ selectedPlayer }: TeamPlayersDashboardPro
 
       {/* 📊 PANEL DE CONTENIDO INFERIOR */}
       <div className="bg-card border border-border rounded-xl p-5 shadow-xl w-full min-h-[400px]">
-        
+
         {/* MODO ALL TEAM */}
         {viewMode === "all-team" && (
           <div className="space-y-5 w-full">
@@ -182,10 +182,10 @@ export function TeamPlayersDashboard({ selectedPlayer }: TeamPlayersDashboardPro
                       const pl = playersDatabase[key]
                       const ag = mainPlayerAgent[key]
                       return (
-                        <tr 
-                          key={pl.id} 
+                        <tr
+                          key={pl.id}
                           // 4. Usamos el enrutador para viajar al jugador cuando se hace clic en la fila
-                          onClick={() => router.push(`/dashboard/players/${key.toLowerCase()}`)} 
+                          onClick={() => router.push(`/dashboard/players/${key.toLowerCase()}`)}
                           className="hover:bg-slate-950/40 transition-colors cursor-pointer group"
                         >
                           <td className="py-2.5 font-bold text-white uppercase flex items-center gap-2 text-xs">
@@ -216,10 +216,10 @@ export function TeamPlayersDashboard({ selectedPlayer }: TeamPlayersDashboardPro
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border/40 pb-3 gap-3">
               <div className="flex items-center gap-2.5">
                 <div className="h-6 w-6 rounded overflow-hidden border border-border/40 bg-slate-950">
-                <img
-                  src={actualPlayerKey ? mainPlayerAgent[actualPlayerKey]?.icon : undefined}
-                  alt=""
-                  className="h-full w-full object-cover"
+                  <img
+                    src={actualPlayerKey ? mainPlayerAgent[actualPlayerKey]?.icon : undefined}
+                    alt=""
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <span className="text-white text-sm font-black uppercase tracking-wider">{p.name} · Panel de Control</span>

@@ -45,26 +45,36 @@ const ribTacticalData: Record<string, {
       { second: 90, kills: 1, plants: 0 }
     ],
     playersPostPlant: [
-      { name: "bruhbruhfish", avatarColor: "bg-red-500", positions: [
-        { site: "A", side: "ATK", x: "top-[38%]", y: "left-[65%]" },
-        { site: "A", side: "DEF", x: "top-[45%]", y: "left-[80%]" }
-      ]},
-      { name: "geneticzz", avatarColor: "bg-blue-500", positions: [
-        { site: "A", side: "ATK", x: "top-[48%]", y: "left-[62%]" },
-        { site: "A", side: "DEF", x: "top-[52%]", y: "left-[72%]" }
-      ]},
-      { name: "jackal", avatarColor: "bg-emerald-500", positions: [
-        { site: "A", side: "ATK", x: "top-[32%]", y: "left-[75%]" },
-        { site: "A", side: "DEF", x: "top-[35%]", y: "left-[68%]" }
-      ]},
-      { name: "rimuu", avatarColor: "bg-amber-500", positions: [
-        { site: "A", side: "ATK", x: "top-[50%]", y: "left-[58%]" },
-        { site: "A", side: "DEF", x: "top-[58%]", y: "left-[76%]" }
-      ]},
-      { name: "spexleon", avatarColor: "bg-purple-500", positions: [
-        { site: "A", side: "ATK", x: "top-[55%]", y: "left-[60%]" },
-        { site: "A", side: "DEF", x: "top-[62%]", y: "left-[65%]" }
-      ]}
+      {
+        name: "bruhbruhfish", avatarColor: "bg-red-500", positions: [
+          { site: "A", side: "ATK", x: "top-[38%]", y: "left-[65%]" },
+          { site: "A", side: "DEF", x: "top-[45%]", y: "left-[80%]" }
+        ]
+      },
+      {
+        name: "geneticzz", avatarColor: "bg-blue-500", positions: [
+          { site: "A", side: "ATK", x: "top-[48%]", y: "left-[62%]" },
+          { site: "A", side: "DEF", x: "top-[52%]", y: "left-[72%]" }
+        ]
+      },
+      {
+        name: "jackal", avatarColor: "bg-emerald-500", positions: [
+          { site: "A", side: "ATK", x: "top-[32%]", y: "left-[75%]" },
+          { site: "A", side: "DEF", x: "top-[35%]", y: "left-[68%]" }
+        ]
+      },
+      {
+        name: "rimuu", avatarColor: "bg-amber-500", positions: [
+          { site: "A", side: "ATK", x: "top-[50%]", y: "left-[58%]" },
+          { site: "A", side: "DEF", x: "top-[58%]", y: "left-[76%]" }
+        ]
+      },
+      {
+        name: "spexleon", avatarColor: "bg-purple-500", positions: [
+          { site: "A", side: "ATK", x: "top-[55%]", y: "left-[60%]" },
+          { site: "A", side: "DEF", x: "top-[62%]", y: "left-[65%]" }
+        ]
+      }
     ]
   }
 }
@@ -82,19 +92,19 @@ export function MapTacticalHeatmap({ activeMap, activeSide }: MapTacticalHeatmap
   if (activeMap === "ALL") return null
 
   const data = ribTacticalData[activeMap] || ribTacticalData["Ascent"]
-  
+
   // 🗺️ CORREGIDO: Ruta adaptada exactamente a tu public/maps/ terminado en _minimap.png
   const minimapPath = `/maps/${activeMap.toLowerCase()}_minimap.png`
 
   return (
     <div className="bg-card border border-border rounded-xl p-5 shadow-lg space-y-4 w-full">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-border/40 pb-3 gap-3">
         <div className="text-amber-400 font-black text-[10px] uppercase tracking-wider flex items-center gap-2">
           <Crosshair className="h-4 w-4" />
           <span>RIB.gg Advanced Analytics - {activeMap.toUpperCase()}</span>
         </div>
-        
+
         <div className="flex bg-slate-950 rounded-lg p-0.5 border border-border/40 gap-1 text-[9px] font-black uppercase tracking-wider">
           <button onClick={() => setSubTab("PLANTS")} className={cn("px-2.5 py-1 rounded-md transition-all", subTab === "PLANTS" ? "bg-slate-900 border border-border/60 text-white" : "text-muted-foreground/60 hover:text-foreground")}>
             <Bomb className="h-3 w-3 inline mr-1" /> Spike Plants
@@ -109,7 +119,7 @@ export function MapTacticalHeatmap({ activeMap, activeSide }: MapTacticalHeatmap
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
-        
+
         <div className="bg-slate-950/40 border border-border/40 rounded-xl p-4 space-y-4 h-full flex flex-col justify-between">
           <div className="space-y-3">
             <div className="flex justify-between items-center">
@@ -167,12 +177,12 @@ export function MapTacticalHeatmap({ activeMap, activeSide }: MapTacticalHeatmap
         <div className="lg:col-span-2 w-full">
           {subTab !== "TIMELINE" ? (
             <div className="relative aspect-square w-full bg-slate-900 border border-border/40 rounded-xl overflow-hidden flex items-center justify-center shadow-inner">
-              
+
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:20px_20px] opacity-20 z-0" />
-              
+
               {!imageError && (
-                <img 
-                  src={minimapPath} 
+                <img
+                  src={minimapPath}
                   alt=""
                   className="absolute inset-0 w-full h-full object-cover opacity-80 z-10 select-none pointer-events-none transition-opacity duration-300"
                   onError={() => setImageError(true)}
@@ -185,7 +195,7 @@ export function MapTacticalHeatmap({ activeMap, activeSide }: MapTacticalHeatmap
                   <p className="max-w-[240px] leading-relaxed normal-case font-sans">Asegúrate de tener el archivo <code className="bg-slate-900 px-1 py-0.5 rounded text-white font-mono text-[9px]">{activeMap.toLowerCase()}_minimap.png</code> dentro de public/maps/</p>
                 </div>
               )}
-              
+
               <div className="absolute top-4 left-4 z-30 bg-slate-950/90 border border-border px-2 py-1 rounded text-[9px] font-mono font-bold uppercase text-white shadow-xl">
                 Radar: {activeMap.toUpperCase()} - Site {selectedSite}
               </div>
@@ -235,12 +245,12 @@ export function MapTacticalHeatmap({ activeMap, activeSide }: MapTacticalHeatmap
 
                   return (
                     <div key={idx} className="flex-1 h-full flex items-end justify-center relative group">
-                      <div 
-                        style={{ height: `${killHeight}%` }} 
+                      <div
+                        style={{ height: `${killHeight}%` }}
                         className="w-full bg-emerald-500/10 border-t-2 border-x border-emerald-400/40 rounded-t group-hover:bg-emerald-500/20 transition-all duration-300"
                       />
-                      <div 
-                        style={{ bottom: `${plantCurveBottom}%` }} 
+                      <div
+                        style={{ bottom: `${plantCurveBottom}%` }}
                         className="absolute h-1.5 w-1.5 rounded-full bg-cyan-400 z-30 shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-transform group-hover:scale-150"
                       />
                       <div className="absolute hidden group-hover:flex flex-col bg-slate-950 border border-border p-1.5 rounded text-[8px] font-mono font-bold text-white shadow-2xl z-50 bottom-full mb-1 whitespace-nowrap">

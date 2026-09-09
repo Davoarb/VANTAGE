@@ -121,8 +121,8 @@ export function ScoreboardTable({ players }: { players: ValorantPlayer[] }) {
                 const iconPath = AGENT_FULL_ICONS[agentName]
 
                 return (
-                  <tr 
-                    key={player.id || index} 
+                  <tr
+                    key={player.id || index}
                     className="border-b border-border/40 transition-all last:border-0 hover:bg-accent/30 font-sans"
                   >
                     <td className="px-5 py-3.5">
@@ -133,8 +133,8 @@ export function ScoreboardTable({ players }: { players: ValorantPlayer[] }) {
                         {/* 📸 FOTO DEL PERSONAJE DINÁMICA */}
                         {iconPath ? (
                           <img
-                            src={iconPath} 
-                            alt={agentName} 
+                            src={iconPath}
+                            alt={agentName}
                             className="h-9 w-9 rounded-md object-cover border border-border bg-muted/50"
                             onError={(e) => {
                               // Si la imagen falla o no existe, mete el fallback de texto para que no explote

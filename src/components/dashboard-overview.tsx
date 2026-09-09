@@ -6,62 +6,62 @@ import { Map, CalendarDays, CheckCircle2, Clock, Swords, GraduationCap, Video } 
 export function DashboardOverview() {
   // Métricas para la presentación ante el Club de Fútbol
   const quickStats = [
-    { 
-      title: "Mejor Mapa Jugado", 
-      value: "Pearl", 
-      desc: "84% Winrate (16 Partidos)", 
-      icon: Map, 
-      color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" 
+    {
+      title: "Mejor Mapa Jugado",
+      value: "Pearl",
+      desc: "84% Winrate (16 Partidos)",
+      icon: Map,
+      color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20"
     },
-    { 
-      title: "Últimas Praccs", 
-      value: "Bind / Ascent", 
-      desc: "Balance: +2 Victorias ayer", 
-      icon: Swords, 
-      color: "text-primary bg-primary/10 border-primary/20" 
+    {
+      title: "Últimas Praccs",
+      value: "Bind / Ascent",
+      desc: "Balance: +2 Victorias ayer",
+      icon: Swords,
+      color: "text-primary bg-primary/10 border-primary/20"
     },
-    { 
-      title: "Tareas Pendientes", 
-      value: "3 Objetivos", 
-      desc: "Prioridad: Alta para el Roster", 
-      icon: CheckCircle2, 
-      color: "text-amber-400 bg-amber-400/10 border-amber-400/20" 
+    {
+      title: "Tareas Pendientes",
+      value: "3 Objetivos",
+      desc: "Prioridad: Alta para el Roster",
+      icon: CheckCircle2,
+      color: "text-amber-400 bg-amber-400/10 border-amber-400/20"
     },
   ]
 
   const scheduleTasks = [
-    { 
-      time: "16:00 - 17:30", 
-      type: "Teórica / Táctica", 
-      title: "Análisis de Líneas de Visión en Abyss", 
-      desc: "Estudio de setups defensivos del meta actual y contra-estrategias.", 
-      icon: GraduationCap, 
-      badge: "Estrategia", 
-      badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20" 
+    {
+      time: "16:00 - 17:30",
+      type: "Teórica / Táctica",
+      title: "Análisis de Líneas de Visión en Abyss",
+      desc: "Estudio de setups defensivos del meta actual y contra-estrategias.",
+      icon: GraduationCap,
+      badge: "Estrategia",
+      badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20"
     },
-    { 
-      time: "17:45 - 21:00", 
-      type: "Bloque Scrims", 
-      title: "Bloque de 3 mapas vs KOI / Movistar Optix", 
-      desc: "Sincronización de VOD en tiempo real y testeo de composiciones con Vyse.", 
-      icon: Swords, 
-      badge: "Pracc Oficial", 
-      badgeColor: "bg-primary/10 text-primary border-primary/20" 
+    {
+      time: "17:45 - 21:00",
+      type: "Bloque Scrims",
+      title: "Bloque de 3 mapas vs KOI / Movistar Optix",
+      desc: "Sincronización de VOD en tiempo real y testeo de composiciones con Vyse.",
+      icon: Swords,
+      badge: "Pracc Oficial",
+      badgeColor: "bg-primary/10 text-primary border-primary/20"
     },
-    { 
-      time: "21:15 - 22:30", 
-      type: "Post-Review", 
-      title: "Revisión de Errores Económicos y VOD", 
-      desc: "Cruzar datos del Economy Chart para pulir compras forzadas y rondas eco.", 
-      icon: Video, 
-      badge: "Análisis", 
-      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20" 
+    {
+      time: "21:15 - 22:30",
+      type: "Post-Review",
+      title: "Revisión de Errores Económicos y VOD",
+      desc: "Cruzar datos del Economy Chart para pulir compras forzadas y rondas eco.",
+      icon: Video,
+      badge: "Análisis",
+      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20"
     },
   ]
 
   return (
     <div className="space-y-6 w-full animate-fade-in font-mono">
-      
+
       {/* 📊 SECCIÓN DE INFO METRICAS SUPERIORES */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {quickStats.map((stat, i) => (
@@ -91,7 +91,7 @@ export function DashboardOverview() {
         <div className="relative border-l-2 border-border/40 ml-3 pl-6 space-y-6 py-2">
           {scheduleTasks.map((task, idx) => (
             <div key={idx} className="relative group">
-              
+
               {/* Nodo indicador en la línea de tiempo */}
               <div className="absolute -left-[35px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background flex items-center justify-center transition-all group-hover:scale-110 group-hover:bg-primary shadow-[0_0_8px_rgba(239,68,68,0.3)]" />
 

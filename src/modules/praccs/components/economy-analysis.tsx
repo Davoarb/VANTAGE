@@ -36,67 +36,67 @@ export function EconomyAnalysis({ rawTimelineData, currentRound }: EconomyAnalys
   const ourTeam = roundData?.nuestroEquipo ?? defaultOurTeam
   const enemyTeam = roundData?.equipoRival ?? defaultEnemyTeam
 
-    return (
-      <div className="rounded-xl border border-border bg-card p-5 space-y-4 shadow-sm h-full flex flex-col justify-between">
+  return (
+    <div className="rounded-xl border border-border bg-card p-5 space-y-4 shadow-sm h-full flex flex-col justify-between">
+      <div>
+        <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground font-mono">
+          💰 Snapshot Económico · Ronda {currentRound}
+        </h3>
+        <p className="text-xs text-muted-foreground mt-0.5">Auditoría del loadout, armamento y saldo bancario.</p>
+      </div>
+
+      {/* Tira informativa de gasto global */}
+      <div className="grid grid-cols-3 gap-2 border border-border/60 rounded-lg p-2.5 bg-muted/20 text-center font-mono text-[11px]">
         <div>
-          <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground font-mono">
-            💰 Snapshot Económico · Ronda {currentRound}
-          </h3>
-          <p className="text-xs text-muted-foreground mt-0.5">Auditoría del loadout, armamento y saldo bancario.</p>
+          <p className="text-muted-foreground">RED SPENT</p>
+          <p className="font-bold text-red-400">${redSpent}</p>
         </div>
-  
-        {/* Tira informativa de gasto global */}
-        <div className="grid grid-cols-3 gap-2 border border-border/60 rounded-lg p-2.5 bg-muted/20 text-center font-mono text-[11px]">
-          <div>
-            <p className="text-muted-foreground">RED SPENT</p>
-            <p className="font-bold text-red-400">${redSpent}</p>
-          </div>
-          <div className="border-x border-border/60">
-            <p className="text-muted-foreground">BLUE SPENT</p>
-            <p className="font-bold text-blue-400">${blueSpent}</p>
-          </div>
-          <div>
-            <p className="text-muted-foreground">⚖️ DIFF</p>
-            <p className="font-bold text-amber-400">${diffSpent}</p>
-          </div>
+        <div className="border-x border-border/60">
+          <p className="text-muted-foreground">BLUE SPENT</p>
+          <p className="font-bold text-blue-400">${blueSpent}</p>
         </div>
-  
-        {/* Desglose de Jugadoras */}
-        <div className="space-y-4 text-[11px] flex-1 flex flex-col justify-center">
-          {/* 🟥 NUESTRO TEAM */}
-          <div className="space-y-1.5">
-            <p className="font-bold text-red-400 font-mono tracking-tight">🟥 FALKE TEAM (Atacantes)</p>
-            {ourTeam.map((p: any, idx: number) => (
-              <div key={idx} className="flex justify-between items-center bg-background/40 p-2 rounded border border-border/40 font-mono">
-                <span className="text-foreground font-medium truncate max-w-[120px]">{p.name}</span>
-                <div className="flex gap-4 text-muted-foreground">
-                  <span>🔫 <strong className="text-foreground">{p.weapon}</strong></span>
-                  <span className="hidden sm:inline">🛡️ {p.shield}</span>
-                  <span>K: <strong className="text-foreground">{p.kills}</strong></span>
-                  <span>G: <strong className="text-emerald-400">${p.spent}</strong></span>
-                  <span>B: <strong className="text-sky-400">${p.left}</strong></span>
-                </div>
-              </div>
-            ))}
-          </div>
-  
-          {/* 🟦 ENEMY TEAM */}
-          <div className="space-y-1.5 pt-1">
-            <p className="font-bold text-blue-400 font-mono tracking-tight">🟦 EQUIPO RIVAL (Defensores)</p>
-            {enemyTeam.map((p: any, idx: number) => (
-              <div key={idx} className="flex justify-between items-center bg-background/40 p-2 rounded border border-border/40 font-mono">
-                <span className="text-foreground font-medium truncate max-w-[120px]">{p.name}</span>
-                <div className="flex gap-4 text-muted-foreground">
-                  <span>🔫 <strong className="text-foreground">{p.weapon}</strong></span>
-                  <span className="hidden sm:inline">🛡️ {p.shield}</span>
-                  <span>K: <strong className="text-foreground">{p.kills}</strong></span>
-                  <span>G: <strong className="text-primary">${p.spent}</strong></span>
-                  <span>B: <strong className="text-sky-400">${p.left}</strong></span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div>
+          <p className="text-muted-foreground">⚖️ DIFF</p>
+          <p className="font-bold text-amber-400">${diffSpent}</p>
         </div>
       </div>
-    )
-  }
+
+      {/* Desglose de Jugadoras */}
+      <div className="space-y-4 text-[11px] flex-1 flex flex-col justify-center">
+        {/* 🟥 NUESTRO TEAM */}
+        <div className="space-y-1.5">
+          <p className="font-bold text-red-400 font-mono tracking-tight">🟥 FALKE TEAM (Atacantes)</p>
+          {ourTeam.map((p: any, idx: number) => (
+            <div key={idx} className="flex justify-between items-center bg-background/40 p-2 rounded border border-border/40 font-mono">
+              <span className="text-foreground font-medium truncate max-w-[120px]">{p.name}</span>
+              <div className="flex gap-4 text-muted-foreground">
+                <span>🔫 <strong className="text-foreground">{p.weapon}</strong></span>
+                <span className="hidden sm:inline">🛡️ {p.shield}</span>
+                <span>K: <strong className="text-foreground">{p.kills}</strong></span>
+                <span>G: <strong className="text-emerald-400">${p.spent}</strong></span>
+                <span>B: <strong className="text-sky-400">${p.left}</strong></span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 🟦 ENEMY TEAM */}
+        <div className="space-y-1.5 pt-1">
+          <p className="font-bold text-blue-400 font-mono tracking-tight">🟦 EQUIPO RIVAL (Defensores)</p>
+          {enemyTeam.map((p: any, idx: number) => (
+            <div key={idx} className="flex justify-between items-center bg-background/40 p-2 rounded border border-border/40 font-mono">
+              <span className="text-foreground font-medium truncate max-w-[120px]">{p.name}</span>
+              <div className="flex gap-4 text-muted-foreground">
+                <span>🔫 <strong className="text-foreground">{p.weapon}</strong></span>
+                <span className="hidden sm:inline">🛡️ {p.shield}</span>
+                <span>K: <strong className="text-foreground">{p.kills}</strong></span>
+                <span>G: <strong className="text-primary">${p.spent}</strong></span>
+                <span>B: <strong className="text-sky-400">${p.left}</strong></span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -31,11 +31,11 @@ const mapCardBackgrounds: Record<string, string> = {
 interface MapVodsListProps {
   activeMap: string
   // 🔗 Puedes pasarle el array praccsHistory directamente desde el componente padre
-  externalPraccsData?: PraccMatch[] 
+  externalPraccsData?: PraccMatch[]
 }
 
 export function MapVodsList({ activeMap, externalPraccsData }: MapVodsListProps) {
-  
+
   // 📋 Estructura idéntica y enlazada con tu módulo de praccs (fallback interno)
   const localPraccsHistory: PraccMatch[] = [
     { id: "1", map: "Pearl", scoreUs: 13, scoreEnemy: 4, date: "Hoy - Oficial", active: true },
@@ -70,16 +70,16 @@ export function MapVodsList({ activeMap, externalPraccsData }: MapVodsListProps)
             const isWin = match.scoreUs > match.scoreEnemy
 
             return (
-              <div 
-                key={match.id} 
+              <div
+                key={match.id}
                 style={{ height: "140px" }}
                 className="relative overflow-hidden bg-slate-950 border border-border/80 hover:border-primary/60 rounded-xl p-3 flex flex-col justify-between transition-all duration-200 group shadow-lg w-[320px] sm:w-[350px] shrink-0"
               >
                 {/* Imagen de fondo adaptada al mapa exacto */}
-                <img 
-                  src={mapCardBackgrounds[match.map] || "/maps/ascent.png"} 
-                  alt="" 
-                  className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-300 pointer-events-none select-none z-0" 
+                <img
+                  src={mapCardBackgrounds[match.map] || "/maps/ascent.png"}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-300 pointer-events-none select-none z-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/80 to-slate-950/90 z-0" />
 
@@ -123,8 +123,8 @@ export function MapVodsList({ activeMap, externalPraccsData }: MapVodsListProps)
                 {/* BOTTOM ACCIÓN PLAY */}
                 <div className="flex justify-between items-center border-t border-border/20 pt-2 font-mono text-[8px] z-10 w-full">
                   <span className="text-muted-foreground/60 font-bold">45:00 MINS DURACIÓN</span>
-                  
-                  <a 
+
+                  <a
                     href={match.url || "#"}
                     target="_blank"
                     rel="noopener noreferrer"

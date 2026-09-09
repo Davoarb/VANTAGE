@@ -9,7 +9,7 @@ interface EconomyChartProps {
 }
 
 export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
-  const [activeTab, setActiveTab] = useState<"total" | "bank" | "loadout" >("total")
+  const [activeTab, setActiveTab] = useState<"total" | "bank" | "loadout">("total")
 
   // 📊 1. PARSEO DE DATOS CON HISTORIAL REAL O SIMULADO (17 RONDAS)
   const chartData = useMemo(() => {
@@ -142,7 +142,7 @@ export function EconomyChart({ rawTimelineData }: EconomyChartProps) {
                 opacity={0.2} // Forzado inline también para la línea
               />
               {/* 🚀 Atributos SVG inline nativos: fill="#ffffff" y font-weight para obligar al blanco brillante */}
-              <text 
+              <text
                 x="15"
                 y={line.y + 4}
                 fill="#ffffff"
