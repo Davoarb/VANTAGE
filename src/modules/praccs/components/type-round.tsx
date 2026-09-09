@@ -10,7 +10,7 @@ interface TypeRoundProps {
 export function TypeRound({ rawTimelineData }: TypeRoundProps) {
   const statsEconomicas = useMemo(() => {
     const rondasDetails = rawTimelineData?.detallesPorRondaCompleta || []
-    
+
     let pistolasAtkGanadas = 0, pistolasAtkPerdidas = 0
     let pistolasDefGanadas = 0, pistolasDefPerdidas = 0
     let ecoJugadas = 0, ecoGanadas = 0
@@ -70,14 +70,14 @@ export function TypeRound({ rawTimelineData }: TypeRoundProps) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full select-none font-mono text-xs">
-      
+
       {/* 🎯 TARJETA 1: RONDAS DE PISTOLAS */}
       <div className="rounded-xl border border-border/80 bg-card p-4 shadow-xl flex flex-col justify-between space-y-3 relative overflow-hidden group">
         <div className="flex items-center justify-between text-muted-foreground/80 font-black text-[10px] tracking-wider">
           <span className="flex items-center gap-1.5"><Swords className="h-3.5 w-3.5 text-amber-500" /> PISTOL RNDS</span>
           <span className="text-[9px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded border border-amber-500/20">SPECIAL</span>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-2 flex-1 items-center">
           <div className="bg-slate-950/60 p-2 rounded-xl border border-border/40 text-center backdrop-blur-xs">
             <p className="text-[8px] text-muted-foreground/60 font-bold uppercase tracking-tight">ATK (R1)</p>
@@ -126,7 +126,7 @@ export function TypeRound({ rawTimelineData }: TypeRoundProps) {
         {/* Barra de progreso visual integrada */}
         <div className="w-full bg-slate-950/80 h-1.5 rounded-full overflow-hidden border border-border/30">
           <div
-            className="bg-red-500 h-full rounded-full transition-all duration-500" 
+            className="bg-red-500 h-full rounded-full transition-all duration-500"
             style={{ width: `${calcWinRate(statsEconomicas.eco.ganadas, statsEconomicas.eco.jugadas)}%` }}
           />
         </div>
@@ -158,8 +158,8 @@ export function TypeRound({ rawTimelineData }: TypeRoundProps) {
 
         {/* Barra de progreso visual integrada */}
         <div className="w-full bg-slate-950/80 h-1.5 rounded-full overflow-hidden border border-border/30">
-          <div 
-            className="bg-cyan-500 h-full rounded-full transition-all duration-500" 
+          <div
+            className="bg-cyan-500 h-full rounded-full transition-all duration-500"
             style={{ width: `${calcWinRate(statsEconomicas.semi.ganadas, statsEconomicas.semi.jugadas)}%` }}
           />
         </div>
@@ -191,8 +191,8 @@ export function TypeRound({ rawTimelineData }: TypeRoundProps) {
 
         {/* Barra de progreso visual integrada */}
         <div className="w-full bg-slate-950/80 h-1.5 rounded-full overflow-hidden border border-border/30">
-          <div 
-            className="bg-emerald-500 h-full rounded-full transition-all duration-500" 
+          <div
+            className="bg-emerald-500 h-full rounded-full transition-all duration-500"
             style={{ width: `${calcWinRate(statsEconomicas.full.ganadas, statsEconomicas.full.jugadas)}%` }}
           />
         </div>

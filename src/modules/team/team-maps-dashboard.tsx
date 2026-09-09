@@ -25,7 +25,7 @@ export function TeamMapsDashboard() {
   const [activeSide, setActiveSide] = useState<"ALL" | "ATK" | "DEF">("ALL")
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [onlyActivePool, setOnlyActivePool] = useState<boolean>(true)
-  
+
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export function TeamMapsDashboard() {
 
   return (
     <div className="space-y-6 font-mono text-xs text-foreground select-none animate-fade-in w-full">
-      
+
       {/* 🧭 SELECTOR DE MAPA SUPERIOR */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-center bg-card/20 border border-border/40 rounded-xl p-4 w-full gap-4">
         <div className="lg:col-span-3 flex items-center gap-2">
@@ -178,7 +178,7 @@ export function TeamMapsDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
         <div className="bg-card border border-border rounded-xl p-5 shadow-lg space-y-4 lg:col-span-2">
           <div className="text-primary font-black text-[10px] uppercase tracking-wider border-b border-border pb-2 flex items-center gap-1.5">
-            <Target className="h-3.5 w-3.5" /> 
+            <Target className="h-3.5 w-3.5" />
             <span>WIN CONDITION DISTRIBUTION - {activeSide === "ALL" ? "GLOBAL" : activeSide}</span>
           </div>
           <div className="space-y-3 font-sans">

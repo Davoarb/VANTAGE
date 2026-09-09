@@ -42,7 +42,7 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
 
   return (
     <div className="rounded-xl border border-border bg-card p-6 shadow-xl space-y-4 font-mono text-xs flex flex-col h-full">
-      
+
       {/* HEADER DEL MAPA DE CALOR */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border/40 pb-4 gap-4">
         <div>
@@ -60,8 +60,8 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
             onClick={() => setActiveFilter("FK")}
             className={cn(
               "rounded px-3 py-1.5 font-bold transition-all flex items-center gap-1 uppercase tracking-wider",
-              activeFilter === "FK" 
-                ? "bg-emerald-500 text-slate-950 shadow-sm" 
+              activeFilter === "FK"
+                ? "bg-emerald-500 text-slate-950 shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -71,8 +71,8 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
             onClick={() => setActiveFilter("FD")}
             className={cn(
               "rounded px-3 py-1.5 font-bold transition-all flex items-center gap-1 uppercase tracking-wider",
-              activeFilter === "FD" 
-                ? "bg-red-500 text-slate-950 shadow-sm" 
+              activeFilter === "FD"
+                ? "bg-red-500 text-slate-950 shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -82,8 +82,8 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
             onClick={() => setActiveFilter("SPIKE")}
             className={cn(
               "rounded px-3 py-1.5 font-bold transition-all flex items-center gap-1 uppercase tracking-wider",
-              activeFilter === "SPIKE" 
-                ? "bg-amber-500 text-slate-950 shadow-sm" 
+              activeFilter === "SPIKE"
+                ? "bg-amber-500 text-slate-950 shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -94,10 +94,10 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
 
       {/* 🗺️ ENTORNO DEL MINIMAPA TÁCTICO */}
       <div className="relative w-full aspect-square max-h-[380px] mx-auto rounded-xl overflow-hidden border border-border/80 bg-slate-950 shadow-2xl select-none flex items-center justify-center group">
-        
-        <img 
-          src={minimapUrl} 
-          alt="Radar" 
+
+        <img
+          src={minimapUrl}
+          alt="Radar"
           className="w-full h-full object-cover pointer-events-none opacity-80 transition-opacity duration-300 group-hover:opacity-90"
         />
 
@@ -140,7 +140,7 @@ export function HeatmapPositions({ mapName = "Pearl" }: HeatmapPositionsProps) {
           )
         })}
       </div>
-      
+
       <div className="flex justify-between items-center text-[9px] text-muted-foreground/40 font-sans pt-1 border-t border-border/20">
         <span>Filtros acumulados del match</span>
         <span>Reutilizando la ruta de renderizado local</span>

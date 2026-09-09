@@ -65,7 +65,7 @@ export default function MapPositions({ mapName = "Pearl", currentRound, rawTimel
 
         {/* 🗺️ LADO IZQUIERDO: EL RADAR DEL MAPA */}
         <div className="lg:col-span-7 flex items-center justify-center relative w-full h-full p-1 min-w-[200px] overflow-hidden rounded-2xl bg-slate-950/20 border border-border/30">
-          <div 
+          <div
             onClick={handleMapClick}
             className="relative w-full aspect-square max-h-[380px] rounded-xl overflow-hidden border border-border/80 bg-slate-950 shadow-2xl select-none transition-transform duration-300 ease-out cursor-crosshair"
             style={{
@@ -75,10 +75,10 @@ export default function MapPositions({ mapName = "Pearl", currentRound, rawTimel
           >
             {/* 🛠️ ¡CORREGIDO AQUÍ! Ejecutamos la función pasándole el mapName */}
             <img src={getMapMinimap(mapName)} alt="Radar" className="w-full h-full object-cover pointer-events-none" />
-            
+
             {eventLog.map((ev: any, idx: number) => {
               const isEventSelected = selectedEventIdx === null || selectedEventIdx === idx
-              
+
               // 🧠 Usamos nuestro diccionario dinámico de agentes de forma limpia
               const avatarUrl = AGENT_FULL_ICONS[ev.killerAgent] || "/pjs/default_agente.png"
 
